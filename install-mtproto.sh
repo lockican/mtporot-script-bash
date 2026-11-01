@@ -19,9 +19,14 @@ for cmd in curl xxd head; do
     fi
 done
 
-# Проверяем наличие mtproto-proxy
-if [[ ! -x "$SCRIPT_DIR/mtproto-proxy" ]]; then
-    echo "Ошибка: $SCRIPT_DIR/mtproto-proxy не найден или не исполняемый"
+# Ищем mtproto-proxy в текущем каталоге или PATH
+if [[ -x "$SCRIPT_DIR/mtproto-proxy" ]]; then
+    PROXY_BIN="$SCRIPT_DIR/mtproto-proxy"
+elif command -v mtproto-proxy >/dev/null 2>&1; then
+    PROXY_BIN="$(command -v mtproto-proxy)"
+else
+    echo "Ошибка: mtproto-proxy не установлен."
+    echo "Сначала установите или соберите mtproto-proxy."
     exit 1
 fi
 
