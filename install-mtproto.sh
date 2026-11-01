@@ -1,4 +1,4 @@
-```bash
+
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
@@ -65,4 +65,4 @@ exec "$SCRIPT_DIR/mtproto-proxy" \
     --aes-pwd "$SCRIPT_DIR/proxy-secret" \
     "$SCRIPT_DIR/proxy-multi.conf" \
     -M "$WORKERS"
-```
+
